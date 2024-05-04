@@ -1,0 +1,1 @@
+agora cria uma condição que depois de um 30 segundos ele pega para de gravar e guarda o video no despositivo e depois começa novamente a gravar assim sucessivamente 
