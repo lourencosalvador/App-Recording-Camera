@@ -4,10 +4,21 @@ import { saveAs } from 'file-saver';
 
 
 const CameraRecorder = () => {
+
+
     const videoRef = useRef<HTMLVideoElement>(null);
+
     const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+
     const chunksVideo = useRef<Blob[]>([]);
-   
+
+
+    useEffect(() => {
+
+        initializeMediaStream();
+
+    }, []);
+
 
     const stopRecording = () => {
         if (mediaRecorderRef.current) {
