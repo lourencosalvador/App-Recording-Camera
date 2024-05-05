@@ -1,13 +1,13 @@
 "use client"
 import React, { useEffect, useRef } from 'react';
 import { saveAs } from 'file-saver';
-import useCurrentDateTimeAndLocation from '@/hooks/data-location';
+
 
 const CameraRecorder = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const mediaRecorderRef = useRef<MediaRecorder | null>(null);
     const chunksVideo = useRef<Blob[]>([]);
-    const { dateTime, location } = useCurrentDateTimeAndLocation();
+   
 
     const stopRecording = () => {
         if (mediaRecorderRef.current) {
@@ -34,6 +34,7 @@ const CameraRecorder = () => {
             mediaRecorder.addEventListener('dataavailable', (event) => {
                 if (event.data.size > 0) {
                     chunksVideo.current.push(event.data);
+                    console.log("estou on")
                 }
             });
 
@@ -59,18 +60,6 @@ const CameraRecorder = () => {
     return (
         <div>
             <video ref={videoRef} width="640" height="480" autoPlay />
-            <div>
-
-                <h1>Current Date and Time:</h1>
-
-                <p>{dateTime}</p>
-
-
-                <h1>Current Location:</h1>
-
-                <p>{location}</p>
-
-            </div>
         </div>
     );
 };
